@@ -1,0 +1,237 @@
+{
+  "imposters": [
+    {
+      "protocol": "http",
+      "port": 5555,
+      "name": "Apollo Client Issue",
+      "stubs": [
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "OPTIONS"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/graphql"
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Content-Length": "0",
+                  "Connection" : "keep-alive",
+                  "Access-Control-Allow-Origin": "http://localhost:8100",
+                  "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE",
+                  "Access-Control-Allow-Headers": "*",
+                  "Access-Control-Max-Age" : "86400"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "POST"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/graphql"
+              }
+            },
+            {
+              "deepEquals": {
+                "query": {}
+              }
+            },
+            {
+              "deepEquals": {
+                "body": "{\"operationName\":\"CountriesQuery\",\"variables\":{\"language\":\"en\"},\"query\":\"query CountriesQuery($language: String!) {\\n  countries(language: $language) {\\n    code\\n    name\\n    states {\\n      code\\n      name\\n      __typename\\n    }\\n    __typename\\n  }\\n}\\n\"}"
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 200,
+                "headers": {
+                  "Access-Control-Allow-Origin": "http://localhost:8100",
+                  "Date": "Fri, 09 Mar 2018 18:17:39 GMT",
+                  "Connection": "close"
+                },
+                "body": {
+                  "data": {
+                    "countries": [
+                      {
+                        "code": "US",
+                        "name": "USA",
+                        "states": [
+                          {
+                            "code": "NV",
+                            "name": "Nevada",
+                            "__typename": "State"
+                          }
+                        ],
+                        "__typename": "Country"
+                      }
+                    ]
+                  },
+                  "errors": null
+                },
+                "_mode": "json"
+              }
+            }
+          ]
+        },
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "POST"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/graphql"
+              }
+            },
+            {
+              "deepEquals": {
+                "query": {}
+              }
+            },
+            {
+              "deepEquals": {
+                "body": "{\"operationName\":\"CountriesQuery\",\"variables\":{\"language\":\"es\"},\"query\":\"query CountriesQuery($language: String!) {\\n  countries(language: $language) {\\n    code\\n    name\\n    states {\\n      code\\n      name\\n      __typename\\n    }\\n    __typename\\n  }\\n}\\n\"}"
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 403,
+                "headers": {
+                  "Access-Control-Allow-Origin": "http://localhost:8100",
+                  "Date": "Fri, 09 Mar 2018 18:17:39 GMT",
+                  "Connection": "close"
+                },
+                "body": {
+                  "data": {
+                    "countries": null
+                  }
+                },
+                "_mode": "json"
+              }
+            }
+          ]
+        },
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "POST"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/graphql"
+              }
+            },
+            {
+              "deepEquals": {
+                "query": {}
+              }
+            },
+            {
+              "deepEquals": {
+                "body": "{\"operationName\":\"CountriesQuery\",\"variables\":{\"language\":\"jp\"},\"query\":\"query CountriesQuery($language: String!) {\\n  countries(language: $language) {\\n    code\\n    name\\n    states {\\n      code\\n      name\\n      __typename\\n    }\\n    __typename\\n  }\\n}\\n\"}"
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 403,
+                "headers": {
+                  "Access-Control-Allow-Origin": "http://localhost:8100",
+                  "Date": "Fri, 09 Mar 2018 18:17:39 GMT",
+                  "Connection": "close"
+                },
+                "body": {
+                  "data": {
+                    "countries": null
+                  },
+                  "errors": null
+                },
+                "_mode": "json"
+              }
+            }
+          ]
+        },
+        {
+          "predicates": [
+            {
+              "deepEquals": {
+                "method": "POST"
+              }
+            },
+            {
+              "deepEquals": {
+                "path": "/graphql"
+              }
+            },
+            {
+              "deepEquals": {
+                "query": {}
+              }
+            },
+            {
+              "deepEquals": {
+                "body": "{\"operationName\":\"CountriesQuery\",\"variables\":{\"language\":\"pt\"},\"query\":\"query CountriesQuery($language: String!) {\\n  countries(language: $language) {\\n    code\\n    name\\n    states {\\n      code\\n      name\\n      __typename\\n    }\\n    __typename\\n  }\\n}\\n\"}"
+              }
+            }
+          ],
+          "responses": [
+            {
+              "is": {
+                "statusCode": 403,
+                "headers": {
+                  "Access-Control-Allow-Origin": "http://localhost:8100",
+                  "Date": "Fri, 09 Mar 2018 18:17:39 GMT",
+                  "Connection": "close"
+                },
+                "body": {
+                  "data": {
+                    "countries": null
+                  },
+                  "errors": [
+                    {
+                      "message": "403 - Invalid JWT Token",
+                      "locations": [
+                        {
+                          "line": 2,
+                          "column": 3
+                        }
+                      ],
+                      "path": [
+                        "countries"
+                      ]
+                    }
+                  ]
+                },
+                "_mode": "json"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

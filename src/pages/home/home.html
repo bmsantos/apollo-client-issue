@@ -1,14 +1,20 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Apollo Client 2.0 Closed Stream App Crash Issue
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-row>
+    <button ion-button (click)="call200()">HTTP 200 - OK</button>
+    <button ion-button (click)="call403NoErrors()">HTTP 403 - Forbidden (no errors)</button>
+    <button ion-button (click)="call403NullErrors()">HTTP 403 - Forbidden (with null errors)</button>
+    <button ion-button (click)="call403WithErrors()" color="danger">HTTP 403 - Forbidden (with errors - crash)</button>
+  </ion-row>
+  <ion-row>
+    <span *ngIf="result !== null" style="color: green;">{{result}}</span>
+    <span *ngIf="error !== null" style="color: red;">{{error}}</span>
+  </ion-row>
 </ion-content>
