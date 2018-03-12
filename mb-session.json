@@ -27,7 +27,7 @@
                   "Connection" : "keep-alive",
                   "Access-Control-Allow-Origin": "http://localhost:8100",
                   "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE",
-                  "Access-Control-Allow-Headers": "*",
+                  "Access-Control-Allow-Headers": "content-type, *",
                   "Access-Control-Max-Age" : "86400"
                 }
               }
