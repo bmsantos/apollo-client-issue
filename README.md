@@ -1,8 +1,8 @@
 # Apollo Client 2.0 Error Stream Issue
 
 This project demonstrates the Apollo Client Error Stream Issue that
-causes Apps to crash whenever the HTTP status code from a graphql query
-response is bigger than 300 and errors response field is set. 
+causes Apps to crash whenever the HTTP status code from a GraphQL 
+query response is above HTTP 300 and has the errors response field set.
 
 More on this issue can be found [here](https://github.com/apollographql/apollo-link/issues/542)
 
